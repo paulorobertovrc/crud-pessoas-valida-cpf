@@ -31,7 +31,22 @@ public class Main {
             
         }*/
 
-        Cpf cpf = new Cpf("111.444.777-35");
+        Banco db = new Banco();
+        Pessoa p1 = new Pessoa("Roberto", "111.444.777-35");
+        Pessoa p2 = new Pessoa("Paulo", "111.444.777-35");
+        Pessoa p3 = new Pessoa("Adriana", "111.444.777-35");
+        Pessoa p4 = new Pessoa("Renata", "111.444.777-35");
+        Pessoa p5 = new Pessoa("Jean", "111.444.777-35");
+        db.cadastrar(p1);
+        db.cadastrar(p2);
+        db.cadastrar(p3);
+        db.cadastrar(p4);
+        db.cadastrar(p5);
+        System.out.println(db.buscar());
+        System.out.println("Total de pessoas cadastradas: " + Pessoa.getTotalDePessoas());
+        db.remover(1);
+        System.out.println(db.buscar());
+        System.out.println("Total de pessoas cadastradas após remoção: " + Pessoa.getTotalDePessoas());
 
     }
 }
