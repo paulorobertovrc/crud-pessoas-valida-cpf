@@ -119,4 +119,9 @@ public class Cpf {
 
         return (cpfSanitizado.compareTo(cpfTestado) == 0) ? true : false;
     }
+
+    @Override
+    public String toString() {
+        return this.cpf;
+    }
 }
