@@ -3,16 +3,19 @@ import java.util.List;
 
 public class Banco {
     private static List<Pessoa> dataBase = new ArrayList<>();
+    private int size = Pessoa.getTotalDePessoas();
 
-    public void cadastrar(Pessoa pessoa) {
+    public static void cadastrar(Pessoa pessoa) {
         Banco.dataBase.add(pessoa);
     }
 
-    public List<Pessoa> buscar() {
+    // Retorna todas as Pessoas cadastradas
+    public static List<Pessoa> buscar() {
         return Banco.dataBase;
     }
 
-    public Pessoa buscar(int id) {
+    // Retorna a Pessoa cujo ID é passado por parâmetro
+    public static Pessoa buscar(int id) {
         return Banco.dataBase.get(id - 1);
     }
 
@@ -21,5 +24,9 @@ public class Banco {
             Banco.dataBase.remove(id);
         }
         Pessoa.setTotalPessoas(Pessoa.getTotalDePessoas() - 1);
+    }
+
+    public int getSize() {
+        return this.size;
     }
 }
