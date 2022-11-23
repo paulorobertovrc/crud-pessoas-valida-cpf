@@ -113,9 +113,6 @@ public class Cpf {
         for (int i = 0; i < 11; i++) {
             cpfTestado = cpfTestado.concat(String.valueOf(arrayCpfCompleto[i]));
         }
-        
-        System.out.println(cpfSanitizado);
-        System.out.println(cpfTestado);
 
         return (cpfSanitizado.compareTo(cpfTestado) == 0) ? true : false;
     }
