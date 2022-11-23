@@ -4,6 +4,6 @@ public class Read {
     }
 
     Read(int id) {
-        Banco.buscar(id);
+        System.out.println(Banco.buscar(id));
     }
 }
