@@ -2,11 +2,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
-
-    // static boolean continuar = true;
-
     public static void imprimirMenu() {
-        // apagarConsole();
         System.out.println("============== MENU PRINCIPAL ==============");
         System.out.println("[ 1 ] CADASTRAR");
         System.out.println("[ 2 ] BUSCAR");
