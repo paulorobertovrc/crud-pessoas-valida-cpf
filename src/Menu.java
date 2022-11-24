@@ -26,10 +26,20 @@ public class Menu {
                 System.out.print("CPF: ");
                 String cpf = sc.next();
                 System.out.println();
-                new Create(nome, cpf);
-                System.out.println(nome + " cadastrado(a) com sucesso.");
-                System.out.println();
-                System.out.println("Total de pessoas cadastradas: " + Pessoa.getTotalDePessoas());
+
+                if (nome.isEmpty() || cpf.isEmpty()) {
+                    System.out.println("Os campos não podem permanecer vazios.");
+                }
+
+                if (nome.matches("[A-Za-z ]*") && cpf.matches("[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}")) {
+                    new Create(nome, cpf);
+                    System.out.println(nome + " cadastrado(a) com sucesso.");
+                    System.out.println();
+                    System.out.println("Total de pessoas cadastradas: " + Pessoa.getTotalDePessoas());
+                } else {
+                    System.out.println("Os valores informados não são válidos.");
+                }
+
                 prosseguir();
                 break;
             case 2:
@@ -39,7 +49,9 @@ public class Menu {
                 int respostaCase2 = sc.nextInt();
                 System.out.println();
                 
-                if (respostaCase2 == 0) {
+                if (Banco.isEmpty()) {
+                    System.out.println("O banco de dados está vazio.");
+                } else if (respostaCase2 == 0) {
                     new Read();
                 } else {
                     new Read(respostaCase2);
@@ -51,25 +63,36 @@ public class Menu {
             case 3:
                 apagarConsole();
                 System.out.println("============== ATUALIZAR PESSOA ==============");
-                System.out.print("Informe o ID do cadastro a ser atualizado: ");
-                int respostaCase3 = sc.nextInt();
-                System.out.print("Informe o novo nome: ");
-                String novoNome = sc.next();
-                new Update(respostaCase3, novoNome);
-                System.out.println();
-                System.out.println(Banco.buscar(respostaCase3));
+
+                if (Banco.isEmpty()) {
+                    System.out.println("O banco de dados está vazio.");
+                } else {
+                    System.out.print("Informe o ID do cadastro a ser atualizado: ");
+                    int respostaCase3 = sc.nextInt();
+                    System.out.print("Informe o novo nome: ");
+                    String novoNome = sc.next();
+                    new Update(respostaCase3, novoNome);
+                    System.out.println();
+                    System.out.println(Banco.buscar(respostaCase3));
+                }
+
                 System.out.println();
                 prosseguir();
                 break;
             case 4:
                 apagarConsole();
                 System.out.println("============== EXCLUIR PESSOA ==============");
-                System.out.print("Informe o ID do cadastro a ser excluído: ");
-                int respostaCase4 = sc.nextInt();
-                new Delete(respostaCase4);
-                System.out.println();
-                System.out.println("Cadastro ID " + respostaCase4 + " excluído com sucesso.");
-                System.out.println("Total de pessoas cadastradas: " + Pessoa.getTotalDePessoas());
+                
+                if (Banco.isEmpty()) {
+                    System.out.println("O banco de dados está vazio.");
+                } else {
+                    System.out.print("Informe o ID do cadastro a ser excluído: ");
+                    int respostaCase4 = sc.nextInt();
+                    new Delete(respostaCase4);
+                    System.out.println();
+                    System.out.println("Cadastro ID " + respostaCase4 + " excluído com sucesso.");
+                    System.out.println("Total de pessoas cadastradas: " + Pessoa.getTotalDePessoas());
+                }
                 System.out.println();
                 prosseguir();
                 break;
