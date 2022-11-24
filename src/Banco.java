@@ -27,4 +27,8 @@ public class Banco {
     public static int getSize() {
         return Banco.size;
     }
+
+    public static boolean isEmpty() {
+        return Banco.size == 0;
+    }
 }
