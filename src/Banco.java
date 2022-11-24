@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Banco {
     private static List<Pessoa> dataBase = new ArrayList<>();
-    private int size = Pessoa.getTotalDePessoas();
+    private static int size = Pessoa.getTotalDePessoas();
 
     public static void cadastrar(Pessoa pessoa) {
         Banco.dataBase.add(pessoa);
@@ -19,14 +19,12 @@ public class Banco {
         return Banco.dataBase.get(id - 1);
     }
 
-    public void remover(int id) {
-        if (Banco.dataBase.get(id - 1).getId() == id) { 
-            Banco.dataBase.remove(id);
-        }
+    public static void remover(int id) {
+        Banco.dataBase.remove(id - 1);
         Pessoa.setTotalPessoas(Pessoa.getTotalDePessoas() - 1);
     }
 
-    public int getSize() {
-        return this.size;
+    public static int getSize() {
+        return Banco.size;
     }
 }
